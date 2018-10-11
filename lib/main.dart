@@ -83,36 +83,47 @@ class MyApp extends StatelessWidget {
             style: descTextStyle, child: instructionContainer)
       ],
     ));
-
+    Container buildCardContainer() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+      child: Card(
+        child: Container(
+          padding: EdgeInsets.all(5.0),
+      child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: 200.0,
+              child: leftContainer,
+            ),
+            Expanded(
+              child: Image.asset(
+                'images/pavlova.jpg',
+              ),
+            )
+          ],
+        ),
+      ),)
+    );
+    }
     return MaterialApp(
       title: 'Recipe Template',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.lightBlue,
+        scaffoldBackgroundColor: Colors.lightBlue[100],
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Desert'),
+          title: Text('Deserts'),
         ),
-        body: Center(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 30.0),
-            height: 600.0,
-            child: Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    width: 200.0,
-                    child: leftContainer,
-                  ),
-                  Expanded(
-                    child: Image.asset('images/pavlova.jpg',),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+        body:ListView(
+    children: [
+      buildCardContainer(),
+      buildCardContainer(),
+      buildCardContainer(),
+      buildCardContainer(),
+      buildCardContainer(),
+    ])
       ),
     );
   }
